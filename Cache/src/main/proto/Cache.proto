@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package="com.osc.cache";
+
+message UserData{
+  string name = 1;
+  string email = 2;
+  string contact = 3;
+  string dob = 4;
+}
+
+
+message UserDataResponse{
+    string name = 1;
+    string contact = 2;
+    string dob = 3;
+    string email = 4;
+}
+
+message CacheData{
+    string email = 1;
+}
+
+message CacheDataResponse{
+    repeated string data = 1;
+
+}
+
+service CacheService{
+  rpc  storeUserData(UserData) returns (UserDataResponse);
+  rpc  getUserData(CacheData) returns (UserDataResponse);
+}

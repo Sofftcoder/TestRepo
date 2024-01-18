@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package="com.osc.session";
+
+message SessionData{
+  string email = 1;
+}
+message SessionDataResponse{
+    bool response = 1;
+}
+
+service SessionService{
+    rpc sessionCheck(SessionData) returns (SessionDataResponse);
+    rpc logout(SessionData) returns (SessionDataResponse);
+}

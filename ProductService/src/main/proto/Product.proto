@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package="com.osc.product";
+
+message Products{
+    string productId = 1;
+    string categoryId = 2;
+    string ProdName = 3;
+    float prodMarketPrice = 4;
+    string ProductDescription = 5;
+    int32 ViewCount = 6;
+}
+message SimilarProducts{
+    string productId = 1;
+    string categoryId = 2;
+    string ProdName = 3;
+    float prodMarketPrice = 4;
+    string ProductDescription = 5;
+    int32 Counts = 6;
+}
+message UserDashBoardData{
+    repeated Products products = 1;
+    repeated Categories categories = 2;
+    string TYPE = 3;
+    string similarProducts = 4;
+    string cart =5;
+}
+message ListOfUserData{
+    repeated UserDashBoardData userDashBoardData = 1;
+}
+message Categories{
+    string CategoryId = 1;
+    string CategoryName = 2;
+}
+
+message ProductData{
+  string request = 1;
+}
+
+message SocketRequest{
+    string MT = 1;
+    string prodId = 2;
+    string catId = 3;
+    string filter = 4;
+    string userId = 5;
+}
+
+message SocketResponse{
+    string response = 1;
+}
+message ProductDataResponse{
+    ListOfUserData listOfUserData = 1;
+    bool value = 2;
+}
+
+service ProductService{
+    rpc getProductData(ProductData) returns (ProductDataResponse);
+    rpc socketQuery(SocketRequest) returns (SocketResponse);
+}

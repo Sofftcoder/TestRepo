@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package="com.osc.notification";
+
+message NotificationRequest{
+    string email =1;
+    string otp = 2;
+    }
+
+message NotificationResponse{
+    string valid = 1;
+    }
+
+message EmailNotification{
+    string email = 1;
+}
+
+service NotificationService{
+rpc storeOtp(NotificationRequest) returns (NotificationResponse);
+rpc forgotPassword(EmailNotification) returns (NotificationResponse);
+}
