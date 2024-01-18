@@ -264,8 +264,6 @@ public class ProductService extends ProductServiceGrpc.ProductServiceImplBase {
             responseObserver.onCompleted();
         }else {
             String data = request.getRequest();
-          //  List<com.osc.entity.Products> productsList = productRepository.findAll();
-            List<Categories> categoriesList = categoryRepository.findAll();
             UserData newUser = new UserData();
             newUser.setUserId(userId);
             userDataRepository.save(newUser);
